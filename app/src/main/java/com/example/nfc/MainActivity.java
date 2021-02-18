@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
         });
         nfcAdapter = NfcAdapter.getDefaultAdapter(this);
         if(nfcAdapter == null){
-            Toast.makeText(this, "This device does not support NFC", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Ovaj uredaj ne podrzava NFC", Toast.LENGTH_SHORT).show();
             finish();
         }
         readFromIntent(getIntent());
@@ -131,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
             Log.e("UnsupportedEncoding", e.toString());
         }
 
-        nfc_contents.setText("NFC Content: " + text);
+        nfc_contents.setText("NFC sadrzaj: " + text);
     }
     private void write(String text, Tag tag) throws IOException, FormatException {
         NdefRecord[] records = { createRecord(text) };
@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         if(tag== null){
-            Toast.makeText(this, "Tag is not a null!",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Tag nije null!",Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -153,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
         ndef.writeNdefMessage(message);
 
         ndef.close();
-        Toast.makeText(this, "Tag is written!",Toast.LENGTH_SHORT).show();
+
     }
     private NdefRecord createRecord(String text) throws UnsupportedEncodingException {
         String lang       = "en";
@@ -225,12 +225,12 @@ public class MainActivity extends AppCompatActivity {
         try {
             NdefFormatable ndefFormatable = NdefFormatable.get(tag);
             if(ndefFormatable == null){
-                Toast.makeText(this, "Tag is not formatable!",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Tag nije formatiran!",Toast.LENGTH_SHORT).show();
             }
             ndefFormatable.connect();
             ndefFormatable.format(ndefMessage);
             ndefFormatable.close();
-            Toast.makeText(this, "Tag is written!",Toast.LENGTH_SHORT).show();
+
         }catch (Exception e){
             Log.e("tag", e.getMessage());
         }
