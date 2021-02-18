@@ -118,14 +118,14 @@ public class MainActivity extends AppCompatActivity {
         if (msgs == null || msgs.length == 0) return;
 
         String text = "";
-//        String tagId = new String(msgs[0].getRecords()[0].getType());
+
         byte[] payload = msgs[0].getRecords()[0].getPayload();
-        String textEncoding = ((payload[0] & 128) == 0) ? "UTF-8" : "UTF-16"; // Get the Text Encoding
-        int languageCodeLength = payload[0] & 0063; // Get the Language Code, e.g. "en"
-        // String languageCode = new String(payload, 1, languageCodeLength, "US-ASCII");
+        String textEncoding = ((payload[0] & 128) == 0) ? "UTF-8" : "UTF-16";
+        int languageCodeLength = payload[0] & 0063;
+
 
         try {
-            // Get the Text
+
             text = new String(payload, languageCodeLength + 1, payload.length - languageCodeLength - 1, textEncoding);
         } catch (UnsupportedEncodingException e) {
             Log.e("UnsupportedEncoding", e.toString());
@@ -136,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
     private void write(String text, Tag tag) throws IOException, FormatException {
         NdefRecord[] records = { createRecord(text) };
         NdefMessage message = new NdefMessage(records);
-        // Get an instance of Ndef for the tag.
+
 
         if(tag== null){
             Toast.makeText(this, "Tag is not a null!",Toast.LENGTH_SHORT).show();
@@ -149,9 +149,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         ndef.connect();
-        // Write the message
+
         ndef.writeNdefMessage(message);
-        // Close the connection
+
         ndef.close();
         Toast.makeText(this, "Tag is written!",Toast.LENGTH_SHORT).show();
     }
@@ -163,10 +163,10 @@ public class MainActivity extends AppCompatActivity {
         int    textLength = textBytes.length;
         byte[] payload    = new byte[1 + langLength + textLength];
 
-        // set status byte (see NDEF spec for actual bits)
+
         payload[0] = (byte) langLength;
 
-        // copy langbytes and textbytes into payload
+
         System.arraycopy(langBytes, 0, payload, 1,              langLength);
         System.arraycopy(textBytes, 0, payload, 1 + langLength, textLength);
 
