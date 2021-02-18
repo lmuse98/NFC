@@ -138,8 +138,8 @@ public class MainActivity extends AppCompatActivity {
         NdefMessage message = new NdefMessage(records);
 
 
-        if(tag== null){
-            Toast.makeText(this, "Tag nije null!",Toast.LENGTH_SHORT).show();
+        if(tag == null){
+            Toast.makeText(this, "Tag je null!",Toast.LENGTH_SHORT).show();
             return;
         }
 
