@@ -4,49 +4,49 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical"
-    tools:context="com.example.nfc.MainActivity">
-
+    android:orientation="vertical" >
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Text:"
+        android:text="Plain Text: "
         android:textColor="#000000"
-        android:textSize="30sp"
-        >
+        android:textSize="30sp">
+
     </TextView>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="20sp" >
 
         <EditText
-            android:id="@+id/poruka"
+            android:id="@+id/edit_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:hint="Unesi..."
-            />
+            android:hint="Type Something..." />
 
         <Button
-            android:id="@+id/AktivirajBotun"
+            android:id="@+id/ActivateButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Aktiviraj tag"
+            android:text="Activate Tag"
             android:textColor="#000000" />
     </LinearLayout>
     <TextView
-        android:id="@+id/nfc_sadrzaj"
+        android:id="@+id/nfc_contents"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        />
 
     <Button
-        android:id="@+id/PovijestTag"
-        android:layout_width="wrap_content"
+        android:id="@+id/button"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Povijest tagova"
-        android:textColor="#000000" />
+        android:text="History"
+        android:textColor="#000000"
+        />
+
 
 </LinearLayout>
